@@ -1,0 +1,1 @@
+export const convertLabelToHyphen = ({value}: {value: string}) =>  value ? value.toLowerCase().replace(/\s/g, "-") : "-";
