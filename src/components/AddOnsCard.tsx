@@ -1,7 +1,7 @@
 import { Suspense } from "react";
 import { AddOns } from "../enums";
 import { IAddOnsCard, IProps } from "../interfaces";
-import { capitalizeFirstLetter, handlePriceLabel } from "../utils/formaters";
+import { capitalizeFirstLetter, handlePriceLabel } from "../utils/formater";
 import Loading from "./Loading";
 
 const AddOnsCard = ({

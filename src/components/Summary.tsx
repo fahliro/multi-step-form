@@ -13,7 +13,7 @@ import {
 } from "../constants";
 import { AddOns, PlanType, SummaryCardType } from "../enums";
 import { IProps } from "../interfaces";
-import { capitalizeFirstLetter } from "../utils/formaters";
+import { capitalizeFirstLetter } from "../utils/formater";
 import Loading from "./Loading";
 const SummaryCard = lazy(() => import("./SummaryCard"));
 const StepTitle = lazy(() => import("./StepTitle"));

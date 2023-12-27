@@ -1,7 +1,7 @@
 import { Suspense } from "react";
 import { EMAIL, INVALID_EMAIL, REQUIRED } from "../constants";
 import { IInput, IProps } from "../interfaces";
-import { convertLabelToHyphen } from "../utils/formaters";
+import { convertLabelToHyphen } from "../utils/formater";
 import Loading from "./Loading";
 
 const Input = ({

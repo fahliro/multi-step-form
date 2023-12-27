@@ -1,7 +1,7 @@
 import { Suspense, lazy } from "react";
 import { SubscriptionType } from "../enums";
 import { IProps } from "../interfaces";
-import { capitalizeFirstLetter } from "../utils/formaters";
+import { capitalizeFirstLetter } from "../utils/formater";
 import Loading from "./Loading";
 const Switch = lazy(() => import("./Switch"));
 
