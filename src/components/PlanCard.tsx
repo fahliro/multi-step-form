@@ -1,7 +1,7 @@
 import { Suspense } from "react";
 import { PlanType } from "../enums";
 import { IPlanCard, IProps } from "../interfaces";
-import { capitalizeFirstLetter, handlePriceLabel } from "../utils/formater";
+import { capitalizeFirstLetter, handlePriceLabel } from "../utils/formaters";
 import Loading from "./Loading";
 
 const PlanCard = ({ title, price, selected, props }: IProps & IPlanCard) => {

@@ -1,7 +1,7 @@
 import { Suspense } from "react";
 import { SummaryCardType } from "../enums";
 import { IProps, ISummaryCard } from "../interfaces";
-import { handlePriceLabel } from "../utils/formater";
+import { handlePriceLabel } from "../utils/formaters";
 import Loading from "./Loading";
 
 const SummaryCard = ({ title, price, type, props }: IProps & ISummaryCard) => {
