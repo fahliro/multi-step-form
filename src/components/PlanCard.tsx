@@ -1,4 +1,7 @@
 import { Suspense } from "react";
+import AdvancedImage from "../assets/images/icon-advanced.svg";
+import ArcadeImage from "../assets/images/icon-arcade.svg";
+import ProImage from "../assets/images/icon-pro.svg";
 import { PlanType } from "../enums";
 import { IPlanCard, IProps } from "../interfaces";
 import { capitalizeFirstLetter, handlePriceLabel } from "../utils/formater";
@@ -9,6 +12,23 @@ const PlanCard = ({ title, price, selected, props }: IProps & IPlanCard) => {
 
   const handleClick = (): void => {
     setPlanType(title as PlanType);
+  };
+
+  const ARCADE: PlanType = PlanType.ARCADE;
+  const ADVANCED: PlanType = PlanType.ADVANCED;
+  const PRO: PlanType = PlanType.PRO;
+
+  const handleImage = (): string => {
+    switch (title) {
+      case ARCADE:
+        return ArcadeImage;
+      case ADVANCED:
+        return AdvancedImage;
+      case PRO:
+        return ProImage;
+      default:
+        return "";
+    }
   };
 
   return (
@@ -31,7 +51,7 @@ const PlanCard = ({ title, price, selected, props }: IProps & IPlanCard) => {
       >
         <div>
           <img
-            src={`src/assets/images/icon-${title.toLowerCase()}.svg`}
+            src={handleImage()}
             alt={capitalizeFirstLetter({ value: title })}
           />
         </div>

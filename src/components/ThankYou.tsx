@@ -1,4 +1,5 @@
 import { Suspense } from "react";
+import ThankYouImage from "../assets/images/icon-thank-you.svg";
 import Loading from "./Loading";
 
 const ThankYou = () => {
@@ -19,7 +20,7 @@ const ThankYou = () => {
             className="
           grid justify-center items-center"
           >
-            <img src="src/assets/images/icon-thank-you.svg" alt="Thank You" />
+            <img src={ThankYouImage} alt="Thank You" />
           </div>
           <div
             className="
