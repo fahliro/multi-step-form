@@ -1,1 +1,3 @@
-export const convertLabelToHyphen = ({value}: {value: string}) =>  value ? value.toLowerCase().replace(/\s/g, "-") : "-";
+export const convertLabelToHyphen = ({value}: {value: string}): string =>  value ? value.toLowerCase().replace(/\s/g, "-") : "-";
+export const handlePriceLabel = ({price, isMonthly}: {price: number, isMonthly?: boolean}): string => price ? isMonthly ? `$${price}/mo` : `$${price}/yr` : "-";
+export const capitalizeFirstLetter = ({value}: {value: string}): string => value ? value.charAt(0).toUpperCase() + value.slice(1).replace(/_/g," ").toLowerCase() : "-";

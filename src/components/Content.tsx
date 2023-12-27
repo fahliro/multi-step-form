@@ -1,45 +1,45 @@
 import { Suspense, lazy } from "react";
+import { IProps } from "../interfaces";
 import Loading from "./Loading";
-const Input = lazy(() => import("./Input"));
+const YourInfo = lazy(() => import("./YourInfo"));
+const ThankYou = lazy(() => import("./ThankYou"));
+const Summary = lazy(() => import("./Summary"));
+const AddOns = lazy(() => import("./AddOns"));
+const SelectPlan = lazy(() => import("./SelectPlan"));
 const Footer = lazy(() => import("./Footer"));
 
-const Content = () => {
+const Content = ({ props }: IProps) => {
+  const { step, contentRef } = props;
+
+  const renderContent = (): JSX.Element | null => {
+    switch (step) {
+      case 1:
+        return <YourInfo props={props} />;
+      case 2:
+        return <SelectPlan props={props} />;
+      case 3:
+        return <AddOns props={props} />;
+      case 4:
+        return <Summary props={props} />;
+      case 5:
+        return <ThankYou />;
+      default:
+        return null;
+    }
+  };
+
   return (
     <Suspense fallback={<Loading />}>
       <div
+        ref={contentRef}
         className="
-        absolute top-28 mx-5 rounded-lg bg-neutral-white px-5 py-7 drop-shadow-1xl
-
-        md:relative md:top-0 md:mx-16 md:px-0 md:pt-10 md:py-0"
+          absolute top-28 left-0 right-0 mx-5 px-5 rounded-lg bg-neutral-white py-7 shadow-sm 
+          
+          md:relative md:top-0 md:mx-16 md:px-0 md:mt-10 md:py-0 md:shadow-none"
       >
-        <h1
-          className="
-          text-xl font-bold text-primary-marine-blue
-
-          md:text-3xl"
-        >
-          Personal info
-        </h1>
-        <p
-          className="
-          text-neutral-cool-gray pt-1 text-sm"
-        >
-          Please provide your name, email address, and phone number.
-        </p>
-
-        <form
-          className="
-          grid gap-3 mt-5"
-        >
-          <Input label="Name" placeholder="e.g. Stephen King" />
-          <Input
-            label="Email Address"
-            placeholder="e.g. stephenking@lorem.com"
-          />
-          <Input label="Phone Number" placeholder="e.g. +1 234 567 890" />
-        </form>
+        {renderContent()}
       </div>
-      <Footer />
+      {step < 5 && <Footer props={props} />}
     </Suspense>
   );
 };

@@ -1,5 +1,5 @@
 import { Suspense } from "react";
-import { IStepper } from "../interfaces/Stepper";
+import { IStepper } from "../interfaces";
 import Loading from "./Loading";
 
 const Stepper = ({ isActive, label, number }: IStepper) => {
@@ -7,7 +7,9 @@ const Stepper = ({ isActive, label, number }: IStepper) => {
     <Suspense fallback={<Loading />}>
       <div
         className="
-            md:grid md:grid-cols-4 md:pt-0 md:mb-7 md:cursor-pointer"
+          grid justify-center
+          
+          md:grid-cols-4 md:pt-0 md:mb-7"
       >
         <div
           className={`
