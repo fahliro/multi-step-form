@@ -31,26 +31,31 @@ const App = () => {
     useState<number>(0);
 
   const handleContainerHeight = (): void => {
-    if (containerRef.current && contentRef.current && footerRef.current) {
-      const contentHeight: number = contentRef.current.clientHeight;
-      const contentTop: number = contentRef.current.offsetTop;
-      const footerHeight: number = footerRef.current.clientHeight;
-      const ogContentHeight: number = contentHeight + contentTop + footerHeight;
+    const contentHeight: number = contentRef.current
+      ? contentRef.current.clientHeight
+      : 0;
+    const contentTop: number = contentRef.current
+      ? contentRef.current.offsetTop
+      : 0;
+    const footerHeight: number = footerRef.current
+      ? footerRef.current.clientHeight
+      : 0;
+    const ogContentHeight: number = contentHeight + contentTop + footerHeight;
 
-      const diffHeight: number = initialContainerHeight - ogContentHeight;
+    const diffHeight: number = initialContainerHeight - ogContentHeight;
 
-      const paddingBottom: number = 20;
+    const paddingBottom: number = 20;
 
-      const handlePaddingBottom = (): number =>
-        ogContentHeight > initialContainerHeight
-          ? Math.abs(diffHeight) + paddingBottom
-          : 0;
+    const handlePaddingBottom = (): number =>
+      ogContentHeight > initialContainerHeight
+        ? Math.abs(diffHeight) + paddingBottom
+        : 0;
 
-      const dynamicContainerHeight: number =
-        ogContentHeight + diffHeight + handlePaddingBottom();
+    const dynamicContainerHeight: number =
+      ogContentHeight + diffHeight + handlePaddingBottom();
 
+    if (containerRef.current)
       containerRef.current.style.height = `${dynamicContainerHeight}px`;
-    }
   };
 
   useEffect(() => {
@@ -64,7 +69,7 @@ const App = () => {
 
   useEffect(() => {
     isMobileView && initialContainerHeight && handleContainerHeight();
-  }, [subscriptionType, isInvalidStep, planType, initialContainerHeight]);
+  }, [step, subscriptionType, isInvalidStep, planType, initialContainerHeight]);
 
   const props: IStates = {
     step,
